@@ -105,16 +105,6 @@ void set_device_props(const std::string brand, const std::string device, const s
     }
 }
 
-static const char *build_keys_props[] =
-{
-    "ro.build.tags",
-    "ro.odm.build.tags",
-    "ro.product.build.tags",
-    "ro.system.build.tags",
-    "ro.system_ext.build.tags",
-    "ro.vendor.build.tags",
-    nullptr};
-
 /* From Magisk@native/jni/magiskhide/hide_utils.c */
 static const char *cts_prop_key[] =
     {"ro.boot.vbmeta.device_state", "ro.boot.verifiedbootstate", "ro.boot.flash.locked",
@@ -168,15 +158,6 @@ void vendor_load_properties() {
     property_override("ro.boot.verifiedbootstate", "green");
 //  Enable transitional log for Privileged permissions
     property_override("ro.control_privapp_permissions", "log");
-
-    /* Spoof Build keys */
-    for (int i = 0; build_keys_props[i]; ++i)
-    {
-        property_override(build_keys_props[i], "release-keys");
-    }
-
-    /* Workaround CTS */
-    workaround_cts_properties();
 
 #ifdef __ANDROID_RECOVERY__
     std::string buildtype = GetProperty("ro.build.type", "userdebug");

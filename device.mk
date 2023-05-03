@@ -24,6 +24,10 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_SHIPPING_API_LEVEL := 30
 BOARD_SHIPPING_API_LEVEL := 30
 
+# OEM Unlock reporting
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.oem_unlock_supported=1
+
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 30
 
@@ -152,6 +156,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
+
+# DeviceSettings
+PRODUCT_PACKAGES += \
+    XiaomiParts
 
 # Dex
 ifneq ($(TARGET_BUILD_VARIANT),eng)
@@ -390,6 +398,9 @@ PRODUCT_PACKAGES += \
     nga
 
 # Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay
+	
 PRODUCT_PACKAGES += \
    BoostFrameworkOverlayVayu \
    CarrierConfigOverlayVayu \
