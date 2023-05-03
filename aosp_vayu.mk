@@ -31,4 +31,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=vayu_global \
     PRODUCT_MODEL=M2102J20SI
 
-BUILD_FINGERPRINT := Xiaomi/vayu_global/vayu:12/RKQ1.200826.002/V13.0.5.0.SJUMIXM:user/release-keys
+BUILD_FINGERPRINT := POCO/vayu_global/vayu:12/SKQ1.211006.001/V13.0.3.0.SJUMIXM:user/release-keys
